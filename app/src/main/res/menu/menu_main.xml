@@ -1,0 +1,54 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_red"
+        android:title="@string/action_red"
+        android:orderInCategory="1"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_launcher"
+        android:titleCondensed="@string/actionred" />
+    <item
+        android:id="@+id/action_org"
+        android:title="@string/action_org"
+        android:orderInCategory="2"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_launch_2"
+        android:titleCondensed="@string/actionorg" />
+    <item
+        android:id="@+id/action_yel"
+        android:title="@string/action_yel"
+        android:orderInCategory="3"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_launch_3"
+        android:titleCondensed="@string/actionyel" />
+    <item
+        android:id="@+id/action_grn"
+        android:title="@string/action_grn"
+        android:orderInCategory="4"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_launch_4"
+        android:titleCondensed="@string/actiongrn" />
+    <item
+        android:id="@+id/action_blu"
+        android:title="@string/action_blu"
+        android:orderInCategory="5"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_launch_5"
+        android:titleCondensed="@string/actionblu" />
+    <item
+        android:id="@+id/action_pur"
+        android:title="@string/action_pur"
+        android:orderInCategory="6"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_launch_6"
+        android:titleCondensed="@string/actionpur" />
+    <item
+        android:id="@+id/action_wht"
+        android:title="@string/action_wht"
+        android:orderInCategory="7"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_launch_7"
+        android:titleCondensed="@string/actionwht" />
+</menu>

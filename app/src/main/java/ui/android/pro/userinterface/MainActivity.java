@@ -4,7 +4,11 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.widget.MediaController;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -16,29 +20,48 @@ import android.widget.AnalogClock;
 import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 public class MainActivity extends Activity {
     private final String TAG = "MainActivity";
     AnalogClock analogClock;
     TextView textView;
+    VideoView introVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        introVideo = (VideoView) findViewById(R.id.videoView);
+        Uri introVideoUri = Uri.parse( "android.resource://" + getPackageName() + "/" + R.raw.intro );
+        // Uri introVideoUri = Uri.parse("https://archive.org/download/VideoGamesAndLearning/VideoGamesAndTangentialLearning_512kb.mp4");
+        introVideo.setVideoURI(introVideoUri);
+        MediaController introVideoMediaController = new MediaController(this);
+        introVideoMediaController.setAnchorView(introVideo);
+        introVideo.setMediaController(introVideoMediaController);
+        introVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener(){
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
+        introVideo.start();
 
-        ActionBar tabsActionBar = getActionBar();
-        Log.d( TAG, "ActionBar null = " + (tabsActionBar == null) );
-        if (tabsActionBar != null) {
-            tabsActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-            ActionBar.Tab tabArray = tabsActionBar.newTab();
-            tabArray.setText(R.string.tab_one);
-            tabArray.setTabListener(new clockTabListener(this, digitalClockFragment.class.getName()));
-            tabsActionBar.addTab(tabArray);
-            tabArray = tabsActionBar.newTab();
-            tabArray.setText(R.string.tab_two);
-            tabArray.setTabListener(new clockTabListener(this, analogClockFragment.class.getName()));
-            tabsActionBar.addTab(tabArray);
-        }
+       // Pro Ui Chapter 11
+       // taking it back to its roots for new layouts to come
+//        ActionBar tabsActionBar = getActionBar();
+//        Log.d( TAG, "ActionBar null = " + (tabsActionBar == null) );
+//        if (tabsActionBar != null) {
+//            tabsActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+//            ActionBar.Tab tabArray = tabsActionBar.newTab();
+//            tabArray.setText(R.string.tab_one);
+//            tabArray.setTabListener(new clockTabListener(this, digitalClockFragment.class.getName()));
+//            tabsActionBar.addTab(tabArray);
+//            tabArray = tabsActionBar.newTab();
+//            tabArray.setText(R.string.tab_two);
+//            tabArray.setTabListener(new clockTabListener(this, analogClockFragment.class.getName()));
+//            tabsActionBar.addTab(tabArray);
+//        }
 
         // Pro UI Chapter 6
         // now uses tabs so original non-fragment layout is no longer required
@@ -176,6 +199,45 @@ public class MainActivity extends Activity {
 //                return super.onContextItemSelected(item);
 //        }
 //    }
+
+    // menu now used again in Ch12
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.linear_layout:
+                Intent intent_ll = new Intent(this, LinearActivity.class);
+                this.startActivity(intent_ll);
+                break;
+            case R.id.relative_layout:
+                Intent intent_rl = new Intent(this, RelativeActivity.class);
+                this.startActivity(intent_rl);
+                break;
+            case R.id.grid_layout:
+                Intent intent_gl = new Intent(this, GridActivity.class);
+                this.startActivity(intent_gl);
+                break;
+            case R.id.drawer_layout:
+                Intent intent_dl = new Intent(this, DrawerActivity.class);
+                this.startActivity(intent_dl);
+                break;
+            case R.id.sliding_layout:
+                Intent intent_spl = new Intent(this, SlidingPaneActivity.class);
+                this.startActivity(intent_spl);
+                break;
+            case R.id.paging_layout:
+                Intent intent_vpl = new Intent(this, ViewPagingActivity.class);
+                this.startActivity(intent_vpl);
+                break;
+        }
+        return true;
+    }
 
     private class clockTabListener implements ActionBar.TabListener {
         private final Activity currentActivity;

@@ -16,6 +16,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LinearActivity"
+            android:label="@string/linear_layout" />
+        <activity
+            android:name=".RelativeActivity"
+            android:label="@string/relative_layout" />
+        <activity
+            android:name=".GridActivity"
+            android:label="@string/grid_layout" />
+        <activity
+            android:name=".DrawerActivity"
+            android:label="@string/draweer_layout" />
+        <activity
+            android:name=".SlidingPaneActivity"
+            android:label="@string/sliding_layout" />
+        <activity
+            android:name=".ViewPagingActivity"
+            android:label="@string/paging_layout"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ui.android.pro.userinterface.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

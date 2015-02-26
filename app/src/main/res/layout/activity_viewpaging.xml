@@ -4,8 +4,15 @@
     android:id="@+id/planetViewPager"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
+    <!-- Ch18 old PagerTitleStrip
     <android.support.v4.view.PagerTitleStrip
         android:id="@+id/pagerTitleStrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top" />
+    -->
+    <android.support.v4.view.PagerTabStrip
+        android:id="@+id/pagerTabStrip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top" />

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
@@ -33,12 +34,17 @@ public class ViewPagingActivity extends Activity {
         viewPager = (ViewPager) findViewById(R.id.planetViewPager);
         viewPager.setAdapter(viewPagerAdpater);
 
-        final PagerTitleStrip pagerTitle = (PagerTitleStrip) findViewById(R.id.pagerTitleStrip);
-        pagerTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        // Ch18 was PagerTitleStrip
+        // final PagerTitleStrip pagerTitle = (PagerTitleStrip) findViewById(R.id.pagerTitleStrip);
+        final PagerTabStrip pagerTitle = (PagerTabStrip) findViewById(R.id.pagerTabStrip);
+        pagerTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
         pagerTitle.setTextColor(Color.CYAN);
         pagerTitle.setNonPrimaryAlpha(0.64f);
         pagerTitle.setTextSpacing(4);
-
+        pagerTitle.setBackgroundColor(Color.DKGRAY);
+        pagerTitle.setTabIndicatorColor(Color.YELLOW);
+        pagerTitle.setBackgroundResource(R.drawable.pagetaboval);
+        pagerTitle.setPadding(0, 10, 0, 0);
     }
 
 
